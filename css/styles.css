@@ -1,13 +1,19 @@
 /* styles.css */
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Raleway", sans-serif;
+  background-color: #1C1533;
 }
 
 .genero-container {
   margin: 20px;
   padding: 20px;
-  border: 1px solid #ccc;
-  background-color: #f8f8f8;
+  background: linear-gradient(95deg,#8773C2, 45%, #1C1533);
+
+}
+
+h1 {
+  padding-left: 2%;
+  color: #C9BBED;
 }
 
 h2 {
@@ -15,4 +21,17 @@ h2 {
   margin-bottom: 10px;
 }
 
+ul {
+  list-style: none;
+  display: flex;
+  
+}
 
+div {
+  display: flex;
+  flex-direction: row;
+}
+
+img {
+  max-height: 200px;
+}
