@@ -1,44 +1,88 @@
-import peliculas from './peliculas.js'
+import peliculas from './peliculas.js';
 
-let generoContainer = document.querySelectorAll('.genero-container');
-let accion  = document.getElementById('genero-28')
+let generoContainers = document.querySelectorAll('.genero');
+/*let accion  = document.getElementById('genero-28')
 let thriller  = document.getElementById('genero-53');
 let aventuras  = document.getElementById('genero-12');
+let tituloThriller = document.getElementById('titulo-thriller');*/
 
-let pathPrincipal = "https://image.tmdb.org/t/p/w500"
-//let pelisKo = peliculas.filter((pelicula) => pelicula.original_language == 'ko')
-//console.log(pelisKo)
+generoContainers.forEach((container) => {
+  const generoId = +container.id.split('-')[1];
+
+  const peliculasFiltradas = peliculas.filter((pelicula) => {
+    return pelicula.genre_ids.includes(generoId);
+  })
+
+  peliculasFiltradas.forEach(pelicula => {
+
+    const titulo = pelicula.title;
+    const posterPeli = 'https://image.tmdb.org/t/p/w200' + pelicula.poster_path;
+
+    let card = document.createElement('article');
+    card.classList.add('card');
+    
+    let poster = document.createElement('img');
+    poster.classList.add('card_poster');
+    poster.src = posterPeli;
+
+    let titlePeli = document.createElement('h3');
+    titlePeli.classList.add('card_title');
+    titlePeli.textContent = titulo;
+
+    card.append(poster, titlePeli);
+
+    container.appendChild(card)
+
+  })
+
+});
+
+  
+  
 
 
-/*let nuevoElemento = document.createElement('img');
-nuevoElemento.setAttribute(
-  'src',
-  'https://purina.com.pe/sites/default/files/styles/webp/public/2022-10/Que_debes_saber_antes_de_adoptar_un_gatito.jpg.webp?itok=N2sS0lfp'
-);
 
-let cajaImagen = document.getElementById('genero-28');
-cajaImagen.appendChild(nuevoElemento)*/
 
-let posterMuzzle = pathPrincipal + peliculas[1].poster_path;
 
-let nuevoElemento = document.createElement('img');
-nuevoElemento.setAttribute('src', posterMuzzle);
 
-let cajaImagen = document.getElementById('genero-28');
-cajaImagen.appendChild(nuevoElemento)
 
-let peliAcc;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FILTRADO PELICULAS
+
+/*let peliAcc = [];
 for (let i=0; i < peliculas.length; i++) {
-   if(peliculas[i].genre_ids.includes((pelicula) => pelicula.genre_ids == 28)) {
-    peliAcc += peliculas[i].genre_ids;
-    console.log(peliAcc)
-   }
-   else {i++}
-}
-console.log(peliAcc)
+  if(peliculas[i].genre_ids.includes(28)) {
+    peliAcc.push(peliculas[i])};
+  };
 
-console.log(peliculas[6].genre_ids);
-let six = peliculas[6].genre_ids;
 
-console.log(six)
+let peliThr = [];
+for (let i=0; i < peliculas.length; i++) {
+  if(peliculas[i].genre_ids.includes(53)) {
+    peliThr.push(peliculas[i])};
+  };
+
+
+let peliAve = peliculas.filter(pelicula => pelicula.genre_ids.includes(12));
+
+// CREAR LOS ELEMENTOS EN LOS DIVs*/
+
+
